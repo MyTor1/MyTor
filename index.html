@@ -650,4 +650,40 @@
                 s.classList.remove('active');
             });
             
-            document.querySelector
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            document.getElementById(section).classList.add('active');
+            event.target.classList.add('active');
+
+            updateLanguageContent();
+        }
+
+        function switchLanguage(lang) {
+            currentLang = lang;
+            
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            updateLanguageContent();
+        }
+
+        function updateLanguageContent() {
+            document.querySelectorAll('.language-content').forEach(content => {
+                content.classList.remove('active');
+            });
+
+            const activeSection = document.querySelector('.content-section.active');
+            if (activeSection) {
+                const langContent = activeSection.querySelector(`.language-content.${currentLang}`);
+                if (langContent) {
+                    langContent.classList.add('active');
+                }
+            }
+        }
+    </script>
+</body>
+</html>
