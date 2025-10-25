@@ -14,66 +14,111 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: #1a1a1a;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 20px;
         }
 
         header {
             text-align: center;
-            padding: 40px 20px;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
+            padding: 50px 30px;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 24px;
             margin-bottom: 30px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(10px);
         }
 
         .logo {
-            width: 120px;
-            height: 120px;
+            width: 100px;
+            height: 100px;
             margin: 0 auto 20px;
-            background: #667eea;
-            border-radius: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 60px;
-            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+            font-size: 50px;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
         }
 
         h1 {
-            color: #667eea;
-            font-size: 2.5em;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 2.8em;
             margin-bottom: 10px;
+            font-weight: 700;
         }
 
         .tagline {
             color: #666;
-            font-size: 1.1em;
+            font-size: 1.15em;
+            font-weight: 500;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .lang-toggle {
+            display: flex;
+            background: white;
+            border-radius: 12px;
+            padding: 6px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            gap: 4px;
+        }
+
+        .lang-btn {
+            padding: 10px 24px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 0.95em;
+            font-weight: 600;
+            color: #666;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn:hover {
+            color: #667eea;
+        }
+
+        .lang-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
         }
 
         .nav-buttons {
             display: flex;
-            gap: 20px;
+            gap: 12px;
+            flex: 1;
             justify-content: center;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
         }
 
         .nav-btn {
-            padding: 15px 30px;
+            padding: 12px 28px;
             background: white;
-            border: none;
+            border: 2px solid transparent;
             border-radius: 12px;
-            font-size: 1.1em;
+            font-size: 1em;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             color: #667eea;
             font-weight: 600;
@@ -82,20 +127,22 @@
         .nav-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border-color: #667eea;
         }
 
         .nav-btn.active {
-            background: #667eea;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
+            border-color: transparent;
         }
 
         .content-section {
             display: none;
             background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            animation: fadeIn 0.5s;
+            padding: 50px;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            animation: fadeIn 0.4s ease;
         }
 
         .content-section.active {
@@ -103,86 +150,128 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .dual-language {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
+        .language-content {
+            display: none;
         }
 
-        @media (max-width: 768px) {
-            .dual-language {
-                grid-template-columns: 1fr;
-            }
+        .language-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
         }
 
-        .language-section {
-            padding: 20px;
-            border-radius: 12px;
-            background: #f8f9fa;
-        }
-
-        .language-section.english {
-            border-left: 4px solid #667eea;
-        }
-
-        .language-section.hebrew {
-            border-right: 4px solid #764ba2;
+        .language-content.hebrew {
             direction: rtl;
         }
 
         h2 {
             color: #667eea;
-            margin: 30px 0 15px;
-            font-size: 1.8em;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            margin: 0 0 10px 0;
+            font-size: 2.2em;
+            font-weight: 700;
         }
 
         h3 {
             color: #764ba2;
-            margin: 20px 0 10px;
-            font-size: 1.3em;
+            margin: 30px 0 15px;
+            font-size: 1.4em;
+            font-weight: 600;
+        }
+
+        p {
+            margin: 15px 0;
+            color: #333;
         }
 
         ul {
-            margin: 10px 0 10px 20px;
+            margin: 15px 0 15px 25px;
         }
 
         li {
-            margin: 8px 0;
+            margin: 10px 0;
+            color: #333;
+        }
+
+        strong {
+            color: #667eea;
         }
 
         .section-divider {
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #667eea, transparent);
-            margin: 25px 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #e0e0e0, transparent);
+            margin: 30px 0;
         }
 
         .contact-info {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 20px;
-            border-radius: 12px;
-            margin-top: 20px;
+            padding: 30px;
+            border-radius: 16px;
+            margin-top: 40px;
             text-align: center;
+        }
+
+        .contact-info h3 {
+            color: white;
+            margin-top: 0;
         }
 
         .contact-info a {
             color: white;
             text-decoration: none;
             font-weight: 600;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+            transition: border-color 0.3s;
+        }
+
+        .contact-info a:hover {
+            border-bottom-color: white;
         }
 
         .last-updated {
             color: #999;
             font-size: 0.9em;
             font-style: italic;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            header {
+                padding: 35px 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .content-section {
+                padding: 30px 25px;
+            }
+
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .lang-toggle {
+                justify-content: center;
+            }
+
+            .nav-buttons {
+                width: 100%;
+                flex-direction: column;
+            }
+
+            .nav-btn {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -196,342 +285,369 @@
             <p class="tagline">Appointment Booking Made Simple</p>
         </header>
 
-        <div class="nav-buttons">
-            <button class="nav-btn active" onclick="showSection('privacy')">🔒 Privacy Policy</button>
-            <button class="nav-btn" onclick="showSection('terms')">⚖️ Terms of Use</button>
+        <div class="controls">
+            <div class="lang-toggle">
+                <button class="lang-btn active" onclick="switchLanguage('english')">English</button>
+                <button class="lang-btn" onclick="switchLanguage('hebrew')">עברית</button>
+            </div>
+            <div class="nav-buttons">
+                <button class="nav-btn active" onclick="showSection('privacy')">🔒 Privacy Policy</button>
+                <button class="nav-btn" onclick="showSection('terms')">⚖️ Terms of Use</button>
+            </div>
         </div>
 
         <!-- Privacy Policy Section -->
         <div id="privacy" class="content-section active">
-            <div class="dual-language">
-                <!-- English Privacy Policy -->
-                <div class="language-section english">
-                    <h2>🔒 Privacy Policy</h2>
-                    <p class="last-updated">Last updated: October 24, 2025</p>
+            <!-- English Privacy Policy -->
+            <div class="language-content english active">
+                <h2>🔒 Privacy Policy</h2>
+                <p class="last-updated">Last updated: October 25, 2025</p>
 
-                    <h3>1. Introduction</h3>
-                    <p>Welcome to MyTor ("we", "our", "us"). This Privacy Policy explains how we collect, use, and protect your personal information when you use our app. By using MyTor, you agree to this policy.</p>
+                <h3>1. Introduction</h3>
+                <p>Welcome to MyTor ("we", "our", "us"). This Privacy Policy explains how we collect, use, and protect your personal information when you use our app. By using MyTor, you agree to this policy.</p>
 
-                    <div class="section-divider"></div>
+                <div class="section-divider"></div>
 
-                    <h3>2. Information We Collect</h3>
-                    <p>We only collect the minimum information needed to provide our services.</p>
-                    <p><strong>For regular users:</strong></p>
-                    <ul>
-                        <li>Phone number (for login and verification)</li>
-                        <li>Name</li>
-                        <li>Booked appointments (date and time)</li>
-                    </ul>
-                    <p><strong>For business owners:</strong></p>
-                    <ul>
-                        <li>Business name and details (open/close hours, services, prices)</li>
-                        <li>Business contact number and location</li>
-                        <li>Logo and image (optional)</li>
-                        <li>Appointments booked by users</li>
-                    </ul>
-                    <p>We do not collect payment details, emails, or unnecessary personal data.</p>
+                <h3>2. Information We Collect</h3>
+                <p>We only collect the minimum information needed to provide our services.</p>
+                <p><strong>For regular users:</strong></p>
+                <ul>
+                    <li>Phone number (for login and OTP verification)</li>
+                    <li>Name</li>
+                    <li>Booked appointments (date and time)</li>
+                    <li>Authentication tokens (JWT and refresh tokens) used to keep your account logged in securely</li>
+                </ul>
+                <p><strong>For business owners:</strong></p>
+                <ul>
+                    <li>Business name and details (open/close hours, services, prices)</li>
+                    <li>Business contact number and location</li>
+                    <li>Logo and image (optional)</li>
+                    <li>Appointments booked by users</li>
+                </ul>
+                <p>We do not collect payment details, emails, or unnecessary personal data.</p>
 
-                    <div class="section-divider"></div>
+                <div class="section-divider"></div>
 
-                    <h3>3. How We Use the Information</h3>
-                    <p>We use your information only to:</p>
-                    <ul>
-                        <li>Manage appointments between users and businesses</li>
-                        <li>Display business details and availability</li>
-                        <li>Send appointment reminders via push notifications</li>
-                        <li>Improve and secure our app experience</li>
-                    </ul>
-                    <p>We do not share, sell, or rent any user data to third parties.</p>
+                <h3>3. How We Use the Information</h3>
+                <p>We use your information only to:</p>
+                <ul>
+                    <li>Manage appointments between users and businesses</li>
+                    <li>Display business details and availability</li>
+                    <li>Send appointment reminders via push notifications</li>
+                    <li>Improve and secure our app experience</li>
+                    <li>Perform OTP verification for login and authentication</li>
+                </ul>
+                <p>We do not share, sell, or rent any user data to third parties.</p>
 
-                    <div class="section-divider"></div>
+                <div class="section-divider"></div>
 
-                    <h3>4. Data Storage and Security</h3>
-                    <p>Your information is securely stored in our database with strict access control. We use encryption and authentication methods to protect all data. Notifications are stored locally on your device and never sent to our servers.</p>
+                <h3>4. Data Storage and Security</h3>
+                <p>Your information is securely stored in our database with strict access control.</p>
+                <p>Authentication tokens (JWT and refresh tokens) are securely stored on your device using encrypted storage mechanisms. They are used to maintain your session without exposing your personal data.</p>
+                <p>Notifications are stored locally on your device and never sent to our servers.</p>
 
-                    <div class="section-divider"></div>
+                <div class="section-divider"></div>
 
-                    <h3>5. Account Deletion</h3>
-                    <p>You can delete your account and all related data at any time in two ways:</p>
-                    <ul>
-                        <li>Through the "Delete Account" button in the app's settings</li>
-                        <li>By contacting us at MyTor00@hotmail.com</li>
-                    </ul>
-                    <p>Once deleted, all your data (appointments, personal info, business info) will be permanently removed.</p>
+                <h3>5. Account Deletion and Logout</h3>
+                <p>You can delete your account and all related data at any time in two ways:</p>
+                <ul>
+                    <li>Through the "Delete Account" button in the app's settings</li>
+                    <li>By contacting us at MyTor00@hotmail.com</li>
+                </ul>
+                <p>Once deleted, all your data (appointments, personal info, business info) will be permanently removed.</p>
+                <p><strong>Logging out of the app will:</strong></p>
+                <ul>
+                    <li>Delete all local authentication tokens (JWT and refresh tokens)</li>
+                    <li>Invalidate any server-side refresh tokens</li>
+                </ul>
+                <p>This ensures your session is completely terminated.</p>
 
-                    <div class="section-divider"></div>
+                <div class="section-divider"></div>
 
-                    <h3>6. Children's Privacy</h3>
-                    <p>MyTor is not intended for children under 16. We do not knowingly collect information from minors.</p>
+                <h3>6. Children's Privacy</h3>
+                <p>MyTor is not intended for children under 16. We do not knowingly collect information from minors.</p>
 
-                    <div class="section-divider"></div>
+                <div class="section-divider"></div>
 
-                    <h3>7. Data Sharing</h3>
-                    <p>We do not share your data with any third party, except when required by law (e.g., legal request).</p>
+                <h3>7. Data Sharing</h3>
+                <p>We do not share your data with any third party, except when required by law (e.g., legal request).</p>
 
-                    <div class="section-divider"></div>
+                <div class="section-divider"></div>
 
-                    <h3>8. Your Rights</h3>
-                    <p>You can request:</p>
-                    <ul>
-                        <li>To view or correct your data</li>
-                        <li>To delete your account and data permanently</li>
-                        <li>To stop receiving notifications (via device settings)</li>
-                    </ul>
+                <h3>8. Your Rights</h3>
+                <p>You can request:</p>
+                <ul>
+                    <li>To view or correct your data</li>
+                    <li>To delete your account and data permanently</li>
+                    <li>To stop receiving notifications (via device settings)</li>
+                </ul>
 
-                    <div class="section-divider"></div>
+                <div class="section-divider"></div>
 
-                    <h3>9. Updates to This Policy</h3>
-                    <p>We may update this Privacy Policy from time to time. Changes will be published in the app, and continued use means you accept the updated terms.</p>
+                <h3>9. Updates to This Policy</h3>
+                <p>We may update this Privacy Policy from time to time. Changes will be published in the app, and continued use means you accept the updated terms.</p>
 
-                    <div class="contact-info">
-                        <h3 style="color: white; margin-top: 0;">📧 Contact Us</h3>
-                        <p>For any privacy-related questions or data deletion requests:</p>
-                        <p><a href="mailto:MyTor00@hotmail.com">MyTor00@hotmail.com</a></p>
-                        <p>Or through the support section in the app</p>
-                    </div>
+                <div class="contact-info">
+                    <h3>📧 Contact Us</h3>
+                    <p>For any privacy-related questions or data deletion requests:</p>
+                    <p><a href="mailto:MyTor00@hotmail.com">MyTor00@hotmail.com</a></p>
+                    <p>Or through the support section in the app</p>
                 </div>
+            </div>
 
-                <!-- Hebrew Privacy Policy -->
-                <div class="language-section hebrew">
-                    <h2>🔒 מדיניות פרטיות</h2>
-                    <p class="last-updated">עודכן לאחרונה: 24 אוקטובר 2025</p>
+            <!-- Hebrew Privacy Policy -->
+            <div class="language-content hebrew">
+                <h2>🔒 מדיניות פרטיות</h2>
+                <p class="last-updated">עודכן לאחרונה: 25 אוקטובר 2025</p>
 
-                    <h3>1. הקדמה</h3>
-                    <p>ברוכים הבאים ל־MyTor. מדיניות פרטיות זו מסבירה כיצד אנו אוספים, משתמשים ומגנים על המידע האישי שלך. השימוש באפליקציה מהווה הסכמה למדיניות זו.</p>
+                <h3>1. הקדמה</h3>
+                <p>ברוכים הבאים ל־MyTor. מדיניות פרטיות זו מסבירה כיצד אנו אוספים, משתמשים ומגנים על המידע האישי שלך. השימוש באפליקציה מהווה הסכמה למדיניות זו.</p>
 
-                    <div class="section-divider"></div>
+                <div class="section-divider"></div>
 
-                    <h3>2. מידע שנאסף</h3>
-                    <p><strong>למשתמשים רגילים:</strong></p>
-                    <ul>
-                        <li>מספר טלפון (לכניסה ואימות)</li>
-                        <li>שם</li>
-                        <li>תורים שהוזמנו (תאריך ושעה)</li>
-                    </ul>
-                    <p><strong>לבעלי עסקים:</strong></p>
-                    <ul>
-                        <li>שם העסק ופרטיו (שעות פעילות, שירותים, מחירים)</li>
-                        <li>מספר טלפון ומיקום העסק</li>
-                        <li>לוגו ותמונה (אופציונלי)</li>
-                        <li>תורים שהוזמנו על ידי משתמשים</li>
-                    </ul>
-                    <p>האפליקציה אינה אוספת פרטי תשלום או מידע לא נחוץ.</p>
+                <h3>2. מידע שנאסף</h3>
+                <p>אנו אוספים רק את המידע המינימלי הנדרש להענקת השירותים שלנו.</p>
+                <p><strong>למשתמשים רגילים:</strong></p>
+                <ul>
+                    <li>מספר טלפון (לכניסה ואימות OTP)</li>
+                    <li>שם</li>
+                    <li>תורים שהוזמנו (תאריך ושעה)</li>
+                    <li>אסימוני אימות (JWT ו־Refresh Token) המשמשים לשמירה על חשבונך במצב מחובר בצורה מאובטחת</li>
+                </ul>
+                <p><strong>לבעלי עסקים:</strong></p>
+                <ul>
+                    <li>שם העסק ופרטיו (שעות פעילות, שירותים, מחירים)</li>
+                    <li>מספר טלפון ומיקום העסק</li>
+                    <li>לוגו ותמונה (אופציונלי)</li>
+                    <li>תורים שהוזמנו על ידי משתמשים</li>
+                </ul>
+                <p>האפליקציה אינה אוספת פרטי תשלום או מידע לא נחוץ.</p>
 
-                    <div class="section-divider"></div>
+                <div class="section-divider"></div>
 
-                    <h3>3. שימוש במידע</h3>
-                    <p>המידע משמש אך ורק ל־:</p>
-                    <ul>
-                        <li>ניהול תורים בין משתמשים לעסקים</li>
-                        <li>הצגת פרטי העסק וזמינותו</li>
-                        <li>שליחת התראות תזכורת לתורים</li>
-                        <li>שיפור חוויית המשתמש וביטחון המידע</li>
-                    </ul>
-                    <p>המידע לא מועבר או נמכר לגורם שלישי.</p>
+                <h3>3. שימוש במידע</h3>
+                <p>המידע משמש אך ורק ל־:</p>
+                <ul>
+                    <li>ניהול תורים בין משתמשים לעסקים</li>
+                    <li>הצגת פרטי העסק וזמינותו</li>
+                    <li>שליחת התראות תזכורת לתורים</li>
+                    <li>שיפור חוויית המשתמש וביטחון המידע</li>
+                    <li>ביצוע אימות OTP לכניסה ואימות משתמשים</li>
+                </ul>
+                <p>המידע לא מועבר או נמכר לגורם שלישי.</p>
 
-                    <div class="section-divider"></div>
+                <div class="section-divider"></div>
 
-                    <h3>4. אחסון ואבטחת מידע</h3>
-                    <p>המידע נשמר בצורה מאובטחת עם בקרת גישה מתאימה. ההתראות נשמרות רק במכשיר שלך ואינן נשלחות לשרת.</p>
+                <h3>4. אחסון ואבטחת מידע</h3>
+                <p>המידע נשמר בצורה מאובטחת עם בקרת גישה מתאימה.</p>
+                <p>אסימוני אימות (JWT ו־Refresh Token) נשמרים בצורה מוצפנת במכשיר שלך ומשמשים לשמירה על חשבונך מבלי לחשוף מידע אישי.</p>
+                <p>ההתראות נשמרות רק במכשיר שלך ואינן נשלחות לשרת.</p>
 
-                    <div class="section-divider"></div>
+                <div class="section-divider"></div>
 
-                    <h3>5. מחיקת חשבון</h3>
-                    <p>ניתן למחוק את החשבון ואת כל הנתונים האישיים בשתי דרכים:</p>
-                    <ul>
-                        <li>דרך כפתור "מחק חשבון" באפליקציה</li>
-                        <li>על ידי פנייה אלינו במייל MyTor00@hotmail.com</li>
-                    </ul>
-                    <p>לאחר המחיקה – כל הנתונים (תורים, פרטים אישיים ופרטי עסק) יימחקו לצמיתות.</p>
+                <h3>5. מחיקת חשבון והתנתקות</h3>
+                <p>ניתן למחוק את החשבון ואת כל הנתונים האישיים בשתי דרכים:</p>
+                <ul>
+                    <li>דרך כפתור "מחק חשבון" באפליקציה</li>
+                    <li>על ידי פנייה אלינו במייל MyTor00@hotmail.com</li>
+                </ul>
+                <p>לאחר המחיקה – כל הנתונים (תורים, פרטים אישיים ופרטי עסק) יימחקו לצמיתות.</p>
+                <p><strong>בעת התנתקות מהאפליקציה:</strong></p>
+                <ul>
+                    <li>כל אסימוני האימות המקומיים (JWT ו־Refresh Token) ימחקו</li>
+                    <li>אסימוני Refresh Token בשרת יתבטלו</li>
+                </ul>
+                <p>כך מובטח שהחשבון שלך יתנתק לחלוטין.</p>
 
-                    <div class="section-divider"></div>
+                <div class="section-divider"></div>
 
-                    <h3>6. פרטיות ילדים</h3>
-                    <p>האפליקציה אינה מיועדת לילדים מתחת לגיל 16, ואין אנו אוספים מידע מהם ביודעין.</p>
+                <h3>6. פרטיות ילדים</h3>
+                <p>האפליקציה אינה מיועדת לילדים מתחת לגיל 16, ואין אנו אוספים מידע מהם ביודעין.</p>
 
-                    <div class="section-divider"></div>
+                <div class="section-divider"></div>
 
-                    <h3>7. שיתוף מידע</h3>
-                    <p>אין אנו משתפים מידע עם צד שלישי, למעט מקרים הנדרשים על פי חוק.</p>
+                <h3>7. שיתוף מידע</h3>
+                <p>אין אנו משתפים מידע עם צד שלישי, למעט מקרים הנדרשים על פי חוק.</p>
 
-                    <div class="section-divider"></div>
+                <div class="section-divider"></div>
 
-                    <h3>8. זכויות המשתמש</h3>
-                    <p>באפשרותך לבקש:</p>
-                    <ul>
-                        <li>לעיין או לעדכן את הנתונים שלך</li>
-                        <li>למחוק את חשבונך וכל הנתונים הקשורים אליו</li>
-                        <li>לבטל התראות דרך הגדרות המכשיר</li>
-                    </ul>
+                <h3>8. זכויות המשתמש</h3>
+                <p>באפשרותך לבקש:</p>
+                <ul>
+                    <li>לעיין או לעדכן את הנתונים שלך</li>
+                    <li>למחוק את חשבונך וכל הנתונים הקשורים אליו</li>
+                    <li>לבטל התראות דרך הגדרות המכשיר</li>
+                </ul>
 
-                    <div class="section-divider"></div>
+                <div class="section-divider"></div>
 
-                    <h3>9. עדכונים</h3>
-                    <p>מדיניות זו עשויה להשתנות מדי פעם. השימוש המתמשך באפליקציה מהווה הסכמה למדיניות המעודכנת.</p>
+                <h3>9. עדכונים</h3>
+                <p>מדיניות זו עשויה להשתנות מדי פעם. השימוש המתמשך באפליקציה מהווה הסכמה למדיניות המעודכנת.</p>
 
-                    <div class="contact-info">
-                        <h3 style="color: white; margin-top: 0;">📧 יצירת קשר</h3>
-                        <p>לשאלות או בקשות מחיקה:</p>
-                        <p><a href="mailto:MyTor00@hotmail.com">MyTor00@hotmail.com</a></p>
-                        <p>או דרך אפשרות התמיכה באפליקציה</p>
-                    </div>
+                <div class="contact-info">
+                    <h3>📧 יצירת קשר</h3>
+                    <p>לשאלות או בקשות מחיקה:</p>
+                    <p><a href="mailto:MyTor00@hotmail.com">MyTor00@hotmail.com</a></p>
+                    <p>או דרך חלק התמיכה באפליקציה</p>
                 </div>
             </div>
         </div>
 
         <!-- Terms of Use Section -->
         <div id="terms" class="content-section">
-            <div class="dual-language">
-                <!-- English Terms -->
-                <div class="language-section english">
-                    <h2>⚖️ Terms of Use</h2>
-                    <p class="last-updated">Last updated: October 24, 2025</p>
+            <!-- English Terms -->
+            <div class="language-content english active">
+                <h2>⚖️ Terms of Use</h2>
+                <p class="last-updated">Last updated: October 25, 2025</p>
 
-                    <h3>1. Introduction</h3>
-                    <p>Welcome to MyTor. By using our app, you agree to these Terms of Use. If you disagree, please do not use MyTor.</p>
+                <h3>1. Introduction</h3>
+                <p>Welcome to MyTor. By using our app, you agree to these Terms of Use. If you disagree, please do not use MyTor.</p>
 
-                    <div class="section-divider"></div>
+                <div class="section-divider"></div>
 
-                    <h3>2. Purpose of the App</h3>
-                    <p>MyTor is a booking platform connecting users with businesses (such as barbers, dentists, nail technicians, etc.). It allows users to book appointments and business owners to manage them.</p>
+                <h3>2. Purpose of the App</h3>
+                <p>MyTor is a booking platform connecting users with businesses (such as barbers, dentists, nail technicians, etc.). It allows users to book appointments and business owners to manage them.</p>
 
-                    <div class="section-divider"></div>
+                <div class="section-divider"></div>
 
-                    <h3>3. Accounts and Registration</h3>
-                    <ul>
-                        <li>Registration requires a valid phone number</li>
-                        <li>You must provide accurate and truthful information</li>
-                        <li>Business owners must keep their business information updated</li>
-                        <li>Misuse or fake accounts may result in suspension</li>
-                    </ul>
+                <h3>3. Accounts and Registration</h3>
+                <ul>
+                    <li>Registration requires a valid phone number and OTP verification through Twilio</li>
+                    <li>You must provide accurate and truthful information</li>
+                    <li>Business owners must keep their business information updated</li>
+                    <li>Misuse or fake accounts may result in suspension</li>
+                    <li>Authentication tokens (JWT and refresh tokens) are used to securely keep your account logged in. Tokens are stored locally on your device using encrypted storage</li>
+                </ul>
 
-                    <div class="section-divider"></div>
+                <div class="section-divider"></div>
 
-                    <h3>4. Appointments and Responsibility</h3>
-                    <ul>
-                        <li>MyTor only connects users and businesses</li>
-                        <li>MyTor is not responsible for the quality, availability, or results of services provided by businesses</li>
-                        <li>All payment, timing, or cancellation issues must be resolved directly between users and businesses</li>
-                    </ul>
+                <h3>4. Appointments and Responsibility</h3>
+                <ul>
+                    <li>MyTor only connects users and businesses</li>
+                    <li>MyTor is not responsible for the quality, availability, or results of services provided by businesses</li>
+                    <li>All payment, timing, or cancellation issues must be resolved directly between users and businesses</li>
+                </ul>
 
-                    <div class="section-divider"></div>
+                <div class="section-divider"></div>
 
-                    <h3>5. Notifications</h3>
-                    <p>MyTor may send reminders and updates. Notifications are stored locally on your device and can be disabled through device settings.</p>
+                <h3>5. Notifications</h3>
+                <p>MyTor may send reminders and updates. Notifications are stored locally on your device and can be disabled through device settings.</p>
 
-                    <div class="section-divider"></div>
+                <div class="section-divider"></div>
 
-                    <h3>6. Account Deletion</h3>
-                    <p>Users can delete their account and all related data at any time either by:</p>
-                    <ul>
-                        <li>Using the "Delete Account" button inside the app, or</li>
-                        <li>Contacting us at MyTor00@hotmail.com</li>
-                    </ul>
-                    <p>All related data will be permanently deleted.</p>
+                <h3>6. Account Deletion and Logout</h3>
+                <p>Users can delete their account and all related data at any time either by:</p>
+                <ul>
+                    <li>Using the "Delete Account" button inside the app, or</li>
+                    <li>Contacting us at MyTor00@hotmail.com</li>
+                </ul>
+                <p>All related data will be permanently deleted.</p>
+                <p><strong>Logging out will:</strong></p>
+                <ul>
+                    <li>Delete all local authentication tokens (JWT and refresh tokens)</li>
+                    <li>Invalidate any server-side refresh tokens to ensure your session is fully terminated</li>
+                </ul>
 
-                    <div class="section-divider"></div>
+                <div class="section-divider"></div>
 
-                    <h3>7. Privacy</h3>
-                    <p>Your use of MyTor is also governed by our Privacy Policy. We do not share or sell personal information.</p>
+                <h3>7. Privacy</h3>
+                <p>Your use of MyTor is also governed by our Privacy Policy. We do not share or sell personal information. Phone numbers are used only for OTP verification and authentication.</p>
 
-                    <div class="section-divider"></div>
+                <div class="section-divider"></div>
 
-                    <h3>8. Limitations of Liability</h3>
-                    <p>MyTor is provided "as is." We do not guarantee uninterrupted or error-free operation. We are not responsible for any damages caused by use of the app.</p>
+                <h3>8. Limitations of Liability</h3>
+                <p>MyTor is provided "as is." We do not guarantee uninterrupted or error-free operation. We are not responsible for any damages caused by use of the app.</p>
 
-                    <div class="section-divider"></div>
+                <div class="section-divider"></div>
 
-                    <h3>9. Changes to These Terms</h3>
-                    <p>We may modify these terms at any time. Continued use means you agree to the updated version.</p>
+                <h3>9. Changes to These Terms</h3>
+                <p>We may modify these terms at any time. Continued use means you agree to the updated version.</p>
 
-                    <div class="contact-info">
-                        <h3 style="color: white; margin-top: 0;">📧 Contact</h3>
-                        <p><a href="mailto:MyTor00@hotmail.com">MyTor00@hotmail.com</a></p>
-                        <p>Or via the support option inside the app</p>
-                    </div>
+                <div class="contact-info">
+                    <h3>📧 Contact</h3>
+                    <p><a href="mailto:MyTor00@hotmail.com">MyTor00@hotmail.com</a></p>
+                    <p>Or via the support option inside the app</p>
                 </div>
+            </div>
 
-                <!-- Hebrew Terms -->
-                <div class="language-section hebrew">
-                    <h2>⚖️ תנאי שימוש</h2>
-                    <p class="last-updated">עודכן לאחרונה: 24 אוקטובר 2025</p>
+            <!-- Hebrew Terms -->
+            <div class="language-content hebrew">
+                <h2>⚖️ תנאי שימוש</h2>
+                <p class="last-updated">עודכן לאחרונה: 25 אוקטובר 2025</p>
 
-                    <h3>1. הקדמה</h3>
-                    <p>השימוש באפליקציה מהווה הסכמה לתנאים אלה. אם אינך מסכים, אל תשתמש באפליקציה.</p>
+                <h3>1. הקדמה</h3>
+                <p>השימוש באפליקציה מהווה הסכמה לתנאים אלה. אם אינך מסכים, אל תשתמש באפליקציה.</p>
 
-                    <div class="section-divider"></div>
+                <div class="section-divider"></div>
 
-                    <h3>2. מטרת האפליקציה</h3>
-                    <p>MyTor מאפשרת למשתמשים להזמין תורים לעסקים שונים ולבעלי עסקים לנהל את התורים שלהם.</p>
+                <h3>2. מטרת האפליקציה</h3>
+                <p>MyTor מאפשרת למשתמשים להזמין תורים לעסקים שונים ולבעלי עסקים לנהל את התורים שלהם.</p>
 
-                    <div class="section-divider"></div>
+                <div class="section-divider"></div>
 
-                    <h3>3. הרשמה וחשבונות</h3>
-                    <ul>
-                        <li>נדרש מספר טלפון תקין לאימות</li>
-                        <li>יש למסור מידע אמיתי בלבד</li>
-                        <li>בעלי עסקים נדרשים לעדכן את פרטי העסק שלהם</li>
-                        <li>שימוש לרעה או מסירת מידע שקרי יגרור חסימה</li>
-                    </ul>
+                <h3>3. הרשמה וחשבונות</h3>
+                <ul>
+                    <li>נדרש מספר טלפון תקין ואימות OTP דרך Twilio</li>
+                    <li>יש למסור מידע אמיתי בלבד</li>
+                    <li>בעלי עסקים נדרשים לעדכן את פרטי העסק שלהם</li>
+                    <li>שימוש לרעה או מסירת מידע שקרי יגרור חסימה</li>
+                    <li>אסימוני אימות (JWT ו־Refresh Token) משמשים לשמירה על חשבונך מחובר בצורה מאובטחת. האסימונים נשמרים במכשיר בצורה מוצפנת</li>
+                </ul>
 
-                    <div class="section-divider"></div>
+                <div class="section-divider"></div>
 
-                    <h3>4. תורים ואחריות</h3>
-                    <p>האפליקציה מהווה פלטפורמה בלבד ואינה אחראית על איכות השירותים. כל בעיה או ביטול יטופלו ישירות בין המשתמש לעסק.</p>
+                <h3>4. תורים ואחריות</h3>
+                <ul>
+                    <li>האפליקציה מהווה פלטפורמה בלבד ואינה אחראית על איכות השירותים</li>
+                    <li>כל בעיה, תשלום או ביטול יטופלו ישירות בין המשתמש לעסק</li>
+                </ul>
 
-                    <div class="section-divider"></div>
+                <div class="section-divider"></div>
 
-                    <h3>5. התראות</h3>
-                    <p>האפליקציה עשויה לשלוח התראות תזכורת. ניתן לבטל אותן בהגדרות המכשיר.</p>
+                <h3>5. התראות</h3>
+                <p>האפליקציה עשויה לשלוח התראות תזכורת. ניתן לבטל אותן בהגדרות המכשיר.</p>
 
-                    <div class="section-divider"></div>
+                <div class="section-divider"></div>
 
-                    <h3>6. מחיקת חשבון</h3>
-                    <p>ניתן למחוק את החשבון ואת כל הנתונים דרך כפתור "מחק חשבון" באפליקציה או על ידי פנייה למייל MyTor00@hotmail.com. לאחר המחיקה, כל הנתונים ימחקו לצמיתות.</p>
+                <h3>6. מחיקת חשבון והתנתקות</h3>
+                <p>ניתן למחוק את החשבון ואת כל הנתונים דרך כפתור "מחק חשבון" באפליקציה או על ידי פנייה למייל MyTor00@hotmail.com. לאחר המחיקה, כל הנתונים ימחקו לצמיתות.</p>
+                <p><strong>בעת התנתקות מהאפליקציה:</strong></p>
+                <ul>
+                    <li>כל אסימוני האימות המקומיים (JWT ו־Refresh Token) ימחקו</li>
+                    <li>אסימוני Refresh Token בשרת יתבטלו</li>
+                </ul>
+                <p>כך מובטח שהחשבון יתנתק לחלוטין.</p>
 
-                    <div class="section-divider"></div>
+                <div class="section-divider"></div>
 
-                    <h3>7. פרטיות</h3>
-                    <p>השימוש כפוף ל-מדיניות הפרטיות. המידע האישי לא נמכר ולא מועבר לגורם שלישי.</p>
+                <h3>7. פרטיות</h3>
+                <p>השימוש כפוף למדיניות הפרטיות. המידע האישי לא נמכר ולא מועבר לגורם שלישי. מספרי טלפון משמשים אך ורק לאימות OTP ואימות משתמשים.</p>
 
-                    <div class="section-divider"></div>
+                <div class="section-divider"></div>
 
-                    <h3>8. הגבלת אחריות</h3>
-                    <p>האפליקציה ניתנת "כפי שהיא" ללא אחריות מכל סוג. MyTor אינה אחראית לכל נזק הנגרם משימוש באפליקציה.</p>
+                <h3>8. הגבלת אחריות</h3>
+                <p>האפליקציה ניתנת "כפי שהיא" ללא אחריות מכל סוג. MyTor אינה אחראית לכל נזק הנגרם משימוש באפליקציה.</p>
 
-                    <div class="section-divider"></div>
+                <div class="section-divider"></div>
 
-                    <h3>9. עדכונים</h3>
-                    <p>תנאים אלו עשויים להשתנות מעת לעת. המשך השימוש מהווה הסכמה לגרסה המעודכנת.</p>
+                <h3>9. עדכונים</h3>
+                <p>תנאים אלו עשויים להשתנות מעת לעת. המשך השימוש מהווה הסכמה לגרסה המעודכנת.</p>
 
-                    <div class="contact-info">
-                        <h3 style="color: white; margin-top: 0;">📧 יצירת קשר</h3>
-                        <p><a href="mailto:MyTor00@hotmail.com">MyTor00@hotmail.com</a></p>
-                        <p>או דרך כפתור התמיכה באפליקציה</p>
-                    </div>
+                <div class="contact-info">
+                    <h3>📧 יצירת קשר</h3>
+                    <p><a href="mailto:MyTor00@hotmail.com">MyTor00@hotmail.com</a></p>
+                    <p>או דרך כפתור התמיכה באפליקציה</p>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
+        let currentLang = 'english';
+
         function showSection(section) {
-            // Hide all sections
             document.querySelectorAll('.content-section').forEach(s => {
                 s.classList.remove('active');
             });
             
-            // Remove active class from all buttons
-            document.querySelectorAll('.nav-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            
-            // Show selected section
-            document.getElementById(section).classList.add('active');
-            
-            // Highlight active button
-            event.target.classList.add('active');
-        }
-    </script>
-</body>
-</html>
+            document.querySelector
