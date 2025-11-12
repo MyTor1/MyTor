@@ -167,6 +167,10 @@
             direction: rtl;
         }
 
+        .language-content.arabic {
+            direction: rtl;
+        }
+
         h2 {
             color: #667eea;
             margin: 0 0 10px 0;
@@ -289,6 +293,7 @@
             <div class="lang-toggle">
                 <button class="lang-btn active" onclick="switchLanguage('english')">English</button>
                 <button class="lang-btn" onclick="switchLanguage('hebrew')">עברית</button>
+                <button class="lang-btn" onclick="switchLanguage('arabic')">العربية</button>
             </div>
             <div class="nav-buttons">
                 <button class="nav-btn active" onclick="showSection('privacy')">🔒 Privacy Policy</button>
@@ -301,7 +306,7 @@
             <!-- English Privacy Policy -->
             <div class="language-content english active">
                 <h2>🔒 Privacy Policy</h2>
-                <p class="last-updated">Last updated: October 25, 2025</p>
+                <p class="last-updated">Last updated: November 12, 2025</p>
 
                 <h3>1. Introduction</h3>
                 <p>Welcome to MyTor ("we", "our", "us"). This Privacy Policy explains how we collect, use, and protect your personal information when you use our app. By using MyTor, you agree to this policy.</p>
@@ -315,13 +320,16 @@
                     <li>Phone number (for login and OTP verification)</li>
                     <li>Name</li>
                     <li>Booked appointments (date and time)</li>
+                    <li>Waiting list preferences (business, date, service, optional worker) when you join a waitlist</li>
+                    <li>Favorites you save inside the app</li>
                     <li>Authentication tokens (JWT and refresh tokens) used to keep your account logged in securely</li>
+                    <li>Push notification identifiers (FCM tokens, device type, language preferences) so we can deliver reminders and updates</li>
                 </ul>
                 <p><strong>For business owners:</strong></p>
                 <ul>
                     <li>Business name and details (open/close hours, services, prices)</li>
                     <li>Business contact number and location</li>
-                    <li>Logo and image (optional)</li>
+                    <li>Logo, profile photo, slider and promotional images you upload (optional)</li>
                     <li>Appointments booked by users</li>
                 </ul>
                 <p>We do not collect payment details, emails, or unnecessary personal data.</p>
@@ -331,9 +339,9 @@
                 <h3>3. How We Use the Information</h3>
                 <p>We use your information only to:</p>
                 <ul>
-                    <li>Manage appointments between users and businesses</li>
-                    <li>Display business details and availability</li>
-                    <li>Send appointment reminders via push notifications</li>
+                    <li>Manage appointments and waiting lists between users and businesses</li>
+                    <li>Display business details, availability, and promotional media you upload</li>
+                    <li>Send appointment reminders, waiting list alerts, and (for customers of a business) occasional announcements via push notifications</li>
                     <li>Improve and secure our app experience</li>
                     <li>Perform OTP verification for login and authentication</li>
                 </ul>
@@ -342,9 +350,9 @@
                 <div class="section-divider"></div>
 
                 <h3>4. Data Storage and Security</h3>
-                <p>Your information is securely stored in our database with strict access control.</p>
+                <p>Your information is securely stored in databases that we host on DigitalOcean infrastructure. DigitalOcean acts only as our cloud hosting provider—we do not give them direct access to phone numbers or other user information beyond what is required to run the service.</p>
                 <p>Authentication tokens (JWT and refresh tokens) are securely stored on your device using encrypted storage mechanisms. They are used to maintain your session without exposing your personal data.</p>
-                <p>Notifications are stored locally on your device and never sent to our servers.</p>
+                <p>Push notifications are delivered through Firebase Cloud Messaging (Google). We store the minimum token information needed to send those notifications, and the message content is limited to service updates related to your use of MyTor.</p>
 
                 <div class="section-divider"></div>
 
@@ -365,12 +373,18 @@
                 <div class="section-divider"></div>
 
                 <h3>6. Children's Privacy</h3>
-                <p>MyTor is not intended for children under 16. We do not knowingly collect information from minors.</p>
+                <p>MyTor is not intended for children under 14. We do not knowingly collect information from minors.</p>
 
                 <div class="section-divider"></div>
 
-                <h3>7. Data Sharing</h3>
-                <p>We do not share your data with any third party, except when required by law (e.g., legal request).</p>
+                <h3>7. Third-Party Services and Data Sharing</h3>
+                <p>We rely on a small set of trusted providers to run MyTor:</p>
+                <ul>
+                    <li><strong>DigitalOcean</strong> hosts our backend servers and databases. They do not receive phone numbers or other personal data in a readable form beyond what is stored inside our controlled environment.</li>
+                    <li><strong>Twilio</strong> delivers OTP verification codes to your phone number.</li>
+                    <li><strong>Firebase (Google)</strong> powers push notifications so we can send reminders, waiting list alerts, and business announcements.</li>
+                </ul>
+                <p>We do not sell or rent any personal information. We only disclose data when legally required or to enforce our terms.</p>
 
                 <div class="section-divider"></div>
 
@@ -398,7 +412,7 @@
             <!-- Hebrew Privacy Policy -->
             <div class="language-content hebrew">
                 <h2>🔒 מדיניות פרטיות</h2>
-                <p class="last-updated">עודכן לאחרונה: 25 אוקטובר 2025</p>
+                <p class="last-updated">עודכן לאחרונה: 12 נובמבר 2025</p>
 
                 <h3>1. הקדמה</h3>
                 <p>ברוכים הבאים ל־MyTor. מדיניות פרטיות זו מסבירה כיצד אנו אוספים, משתמשים ומגנים על המידע האישי שלך. השימוש באפליקציה מהווה הסכמה למדיניות זו.</p>
@@ -412,13 +426,16 @@
                     <li>מספר טלפון (לכניסה ואימות OTP)</li>
                     <li>שם</li>
                     <li>תורים שהוזמנו (תאריך ושעה)</li>
+                    <li>העדפות רשימת המתנה (עסק, תאריך, שירות ועובד במידת הצורך)</li>
+                    <li>עסקים מועדפים שהוספת</li>
                     <li>אסימוני אימות (JWT ו־Refresh Token) המשמשים לשמירה על חשבונך במצב מחובר בצורה מאובטחת</li>
+                    <li>מזהי התראות דחיפה (FCM), סוג מכשיר ושפת מועדפת כדי שנוכל לשלוח תזכורות ועדכונים</li>
                 </ul>
                 <p><strong>לבעלי עסקים:</strong></p>
                 <ul>
                     <li>שם העסק ופרטיו (שעות פעילות, שירותים, מחירים)</li>
                     <li>מספר טלפון ומיקום העסק</li>
-                    <li>לוגו ותמונה (אופציונלי)</li>
+                    <li>לוגו, תמונת פרופיל, סליידרים ותמונות פרסום שתעלה (אופציונלי)</li>
                     <li>תורים שהוזמנו על ידי משתמשים</li>
                 </ul>
                 <p>האפליקציה אינה אוספת פרטי תשלום או מידע לא נחוץ.</p>
@@ -428,9 +445,9 @@
                 <h3>3. שימוש במידע</h3>
                 <p>המידע משמש אך ורק ל־:</p>
                 <ul>
-                    <li>ניהול תורים בין משתמשים לעסקים</li>
-                    <li>הצגת פרטי העסק וזמינותו</li>
-                    <li>שליחת התראות תזכורת לתורים</li>
+                    <li>ניהול תורים ורשימות המתנה בין משתמשים לעסקים</li>
+                    <li>הצגת פרטי העסק, זמינותו ותמונות פרסום שהועלו</li>
+                    <li>שליחת תזכורות, התראות על מקום שהתפנה ברשימת ההמתנה והודעות לעדכוני עסק ללקוחות קיימים</li>
                     <li>שיפור חוויית המשתמש וביטחון המידע</li>
                     <li>ביצוע אימות OTP לכניסה ואימות משתמשים</li>
                 </ul>
@@ -439,9 +456,9 @@
                 <div class="section-divider"></div>
 
                 <h3>4. אחסון ואבטחת מידע</h3>
-                <p>המידע נשמר בצורה מאובטחת עם בקרת גישה מתאימה.</p>
+                <p>המידע נשמר במסדי נתונים המתארחים בתשתית של DigitalOcean. DigitalOcean משמשת כספקית התשתית בלבד, ואיננו משתפים עימה מספרי טלפון או מידע אישי מעבר לנדרש להפעלת השירות.</p>
                 <p>אסימוני אימות (JWT ו־Refresh Token) נשמרים בצורה מוצפנת במכשיר שלך ומשמשים לשמירה על חשבונך מבלי לחשוף מידע אישי.</p>
-                <p>ההתראות נשמרות רק במכשיר שלך ואינן נשלחות לשרת.</p>
+                <p>התראות דחיפה נשלחות באמצעות Firebase Cloud Messaging (Google). אנו שומרים את המינימום של נתוני הטוקן הדרושים כדי לשלוח התראות אלו, והתוכן מתייחס לשירותים הקשורים לשימושך באפליקציה.</p>
 
                 <div class="section-divider"></div>
 
@@ -462,12 +479,18 @@
                 <div class="section-divider"></div>
 
                 <h3>6. פרטיות ילדים</h3>
-                <p>האפליקציה אינה מיועדת לילדים מתחת לגיל 16, ואין אנו אוספים מידע מהם ביודעין.</p>
+                <p>האפליקציה אינה מיועדת לילדים מתחת לגיל 14, ואין אנו אוספים מידע מהם ביודעין.</p>
 
                 <div class="section-divider"></div>
 
-                <h3>7. שיתוף מידע</h3>
-                <p>אין אנו משתפים מידע עם צד שלישי, למעט מקרים הנדרשים על פי חוק.</p>
+                <h3>7. ספקי צד שלישי ושיתוף מידע</h3>
+                <p>אנו נעזרים במספר ספקים אמינים להפעלת MyTor:</p>
+                <ul>
+                    <li><strong>DigitalOcean</strong> לאירוח השרתים ומסדי הנתונים. הספק אינו מקבל גישה ישירה למספרי טלפון או נתונים אישיים מעבר למה שנמצא בסביבה המוגנת שלנו.</li>
+                    <li><strong>Twilio</strong> לשיגור הודעות OTP למספר הטלפון שלך.</li>
+                    <li><strong>Firebase (Google)</strong> לשליחת התראות דחיפה עבור תזכורות, רשימות המתנה והודעות עסק.</li>
+                </ul>
+                <p>איננו מוכרים או משכירים מידע אישי. נשתף מידע רק אם החוק מחייב אותנו לכך או לצורך אכיפת תנאי השימוש.</p>
 
                 <div class="section-divider"></div>
 
@@ -491,6 +514,112 @@
                     <p>או דרך חלק התמיכה באפליקציה</p>
                 </div>
             </div>
+
+            <!-- Arabic Privacy Policy -->
+            <div class="language-content arabic">
+                <h2>🔒 سياسة الخصوصية</h2>
+                <p class="last-updated">آخر تحديث: 12 نوفمبر 2025</p>
+
+                <h3>1. المقدمة</h3>
+                <p>مرحبًا بك في MyTor ("نحن"، "لنا"). تشرح هذه السياسة كيفية جمعنا لمعلوماتك الشخصية واستخدامها وحمايتها عند استخدامك للتطبيق. يعني استمرارك في الاستخدام موافقتك على هذه السياسة.</p>
+
+                <div class="section-divider"></div>
+
+                <h3>2. المعلومات التي نجمعها</h3>
+                <p>نجمع الحد الأدنى من البيانات اللازمة لتقديم الخدمة.</p>
+                <p><strong>للمستخدمين العاديين:</strong></p>
+                <ul>
+                    <li>رقم الهاتف (لتسجيل الدخول والتحقق عبر OTP)</li>
+                    <li>الاسم</li>
+                    <li>المواعيد المحجوزة (التاريخ والوقت)</li>
+                    <li>تفضيلات قائمة الانتظار (العمل، التاريخ، الخدمة، العامل إن وجد) عند الانضمام لقائمة انتظار</li>
+                    <li>الأعمال المفضلة التي تحفظها داخل التطبيق</li>
+                    <li>رموز المصادقة (JWT وRefresh Token) للحفاظ على تسجيل الدخول بشكل آمن</li>
+                    <li>معرّفات الإشعارات الفورية (رموز FCM، نوع الجهاز، اللغة المفضلة) لإرسال التذكيرات والتنبيهات</li>
+                </ul>
+                <p><strong>لأصحاب الأعمال:</strong></p>
+                <ul>
+                    <li>اسم العمل وتفاصيله (أوقات الدوام، الخدمات، الأسعار)</li>
+                    <li>رقم الاتصال وموقع العمل</li>
+                    <li>الشعار، صورة الملف الشخصي، صور السلايدر أو الحملات الترويجية التي تقوم برفعها (اختياري)</li>
+                    <li>المواعيد التي يحجزها المستخدمون</li>
+                </ul>
+                <p>لا نجمع بيانات الدفع أو البريد الإلكتروني أو أي معلومات غير ضرورية.</p>
+
+                <div class="section-divider"></div>
+
+                <h3>3. كيفية استخدام المعلومات</h3>
+                <p>نستخدم بياناتك فقط من أجل:</p>
+                <ul>
+                    <li>إدارة المواعيد وقوائم الانتظار بين المستخدمين والأعمال</li>
+                    <li>عرض تفاصيل الأعمال، التوفر، والوسائط الترويجية التي ترفعها</li>
+                    <li>إرسال تذكيرات بالمواعيد، وتنبيهات قائمة الانتظار، وإعلانات للأعمال للعملاء الحاليين عبر الإشعارات الفورية</li>
+                    <li>تحسين تجربة التطبيق وتعزيز الأمان</li>
+                    <li>تنفيذ التحقق عبر OTP لتسجيل الدخول والمصادقة</li>
+                </ul>
+                <p>لا نشارك أو نبيع أو نؤجر بيانات المستخدمين لأي طرف ثالث.</p>
+
+                <div class="section-divider"></div>
+
+                <h3>4. تخزين البيانات وأمانها</h3>
+                <p>تخزَّن بياناتك في قواعد بيانات نستضيفها على بنية تحتية تابعة لـ DigitalOcean. تعمل DigitalOcean كمزوّد استضافة فقط، ولا نتيح لها الوصول إلى أرقام الهواتف أو المعلومات الشخصية خارج البيئة المحمية الخاصة بنا.</p>
+                <p>تُخزَّن رموز المصادقة (JWT وRefresh Token) على جهازك باستخدام آليات تخزين مشفرة للحفاظ على جلسة تسجيل الدخول دون كشف بياناتك الشخصية.</p>
+                <p>تُرسَل الإشعارات الفورية عبر Firebase Cloud Messaging (Google). نحتفظ بأقل قدر ممكن من بيانات الرموز اللازمة لإرسال هذه الإشعارات، ويقتصر محتواها على تحديثات الخدمة المرتبطة باستخدامك لـ MyTor.</p>
+
+                <div class="section-divider"></div>
+
+                <h3>5. حذف الحساب وتسجيل الخروج</h3>
+                <p>يمكنك حذف حسابك وجميع البيانات المرتبطة به في أي وقت عبر:</p>
+                <ul>
+                    <li>زر "حذف الحساب" داخل إعدادات التطبيق</li>
+                    <li>التواصل معنا على البريد الإلكتروني MyTor00@hotmail.com</li>
+                </ul>
+                <p>بعد الحذف يتم إزالة جميع البيانات (المواعيد، المعلومات الشخصية، معلومات العمل) نهائيًا.</p>
+                <p><strong>عند تسجيل الخروج:</strong></p>
+                <ul>
+                    <li>يتم حذف جميع رموز المصادقة المخزنة محليًا (JWT وRefresh Token)</li>
+                    <li>يتم إلغاء صلاحية رموز التحديث المخزنة على الخادم</li>
+                </ul>
+                <p>يضمن ذلك إنهاء جلستك بالكامل.</p>
+
+                <div class="section-divider"></div>
+
+                <h3>6. خصوصية الأطفال</h3>
+                <p>MyTor غير مخصص للأطفال دون سن 14 عامًا، ولا نجمع بياناتهم عن قصد.</p>
+
+                <div class="section-divider"></div>
+
+                <h3>7. خدمات الجهات الخارجية ومشاركة البيانات</h3>
+                <p>نستعين بعدد محدود من المزودين الموثوقين لتشغيل MyTor:</p>
+                <ul>
+                    <li><strong>DigitalOcean</strong> لاستضافة الخوادم وقواعد البيانات، دون تمكينهم من قراءة أرقام الهواتف أو البيانات الشخصية خارج أنظمتنا.</li>
+                    <li><strong>Twilio</strong> لإرسال رموز التحقق OTP إلى رقم هاتفك.</li>
+                    <li><strong>Firebase (Google)</strong> لتشغيل الإشعارات الفورية الخاصة بالتذكيرات وتنبيهات قوائم الانتظار وإعلانات الأعمال.</li>
+                </ul>
+                <p>لا نبيع أو نؤجر المعلومات الشخصية. نشارك البيانات فقط إذا طُلب منا قانونيًا أو لتطبيق شروطنا.</p>
+
+                <div class="section-divider"></div>
+
+                <h3>8. حقوقك</h3>
+                <p>يمكنك طلب ما يلي:</p>
+                <ul>
+                    <li>عرض بياناتك أو تصحيحها</li>
+                    <li>حذف حسابك وبياناتك نهائيًا</li>
+                    <li>إيقاف تلقي الإشعارات عبر إعدادات جهازك</li>
+                </ul>
+
+                <div class="section-divider"></div>
+
+                <h3>9. تحديثات هذه السياسة</h3>
+                <p>قد نقوم بتحديث هذه السياسة من وقت لآخر. استمرارك في استخدام التطبيق يعني موافقتك على النسخة المحدّثة.</p>
+
+                <div class="contact-info">
+                    <h3>📧 تواصل معنا</h3>
+                    <p>لأي استفسارات تتعلق بالخصوصية أو طلبات حذف البيانات:</p>
+                    <p><a href="mailto:MyTor00@hotmail.com">MyTor00@hotmail.com</a></p>
+                    <p>أو من خلال قسم الدعم داخل التطبيق</p>
+                </div>
+            </div>
         </div>
 
         <!-- Terms of Use Section -->
@@ -498,7 +627,7 @@
             <!-- English Terms -->
             <div class="language-content english active">
                 <h2>⚖️ Terms of Use</h2>
-                <p class="last-updated">Last updated: October 25, 2025</p>
+                <p class="last-updated">Last updated: November 12, 2025</p>
 
                 <h3>1. Introduction</h3>
                 <p>Welcome to MyTor. By using our app, you agree to these Terms of Use. If you disagree, please do not use MyTor.</p>
@@ -506,7 +635,7 @@
                 <div class="section-divider"></div>
 
                 <h3>2. Purpose of the App</h3>
-                <p>MyTor is a booking platform connecting users with businesses (such as barbers, dentists, nail technicians, etc.). It allows users to book appointments and business owners to manage them.</p>
+                <p>MyTor is a booking platform connecting users with businesses (such as barbers, dentists, nail technicians, etc.). It allows users to book appointments, join waiting lists, receive availability alerts, and for business owners to manage schedules, media, and announcements.</p>
 
                 <div class="section-divider"></div>
 
@@ -521,17 +650,18 @@
 
                 <div class="section-divider"></div>
 
-                <h3>4. Appointments and Responsibility</h3>
+                <h3>4. Appointments, Waiting Lists, and Responsibility</h3>
                 <ul>
                     <li>MyTor only connects users and businesses</li>
+                    <li>Waiting list entries do not guarantee a booking; notifications are first come, first served</li>
                     <li>MyTor is not responsible for the quality, availability, or results of services provided by businesses</li>
-                    <li>All payment, timing, or cancellation issues must be resolved directly between users and businesses</li>
+                    <li>All payment, timing, cancellation, or no-show issues must be resolved directly between users and businesses</li>
                 </ul>
 
                 <div class="section-divider"></div>
 
                 <h3>5. Notifications</h3>
-                <p>MyTor may send reminders and updates. Notifications are stored locally on your device and can be disabled through device settings.</p>
+                <p>MyTor may send reminders, waiting list alerts, and business announcements (no more than once every 3 days per business). Notifications are delivered via Firebase Cloud Messaging and can be disabled through your device settings, but doing so may limit certain features.</p>
 
                 <div class="section-divider"></div>
 
@@ -556,7 +686,7 @@
                 <div class="section-divider"></div>
 
                 <h3>8. Limitations of Liability</h3>
-                <p>MyTor is provided "as is." We do not guarantee uninterrupted or error-free operation. We are not responsible for any damages caused by use of the app.</p>
+                <p>MyTor is provided "as is." We do not guarantee uninterrupted or error-free operation, notification delivery, or availability of waiting list spots. We are not responsible for any damages caused by use of the app.</p>
 
                 <div class="section-divider"></div>
 
@@ -573,7 +703,7 @@
             <!-- Hebrew Terms -->
             <div class="language-content hebrew">
                 <h2>⚖️ תנאי שימוש</h2>
-                <p class="last-updated">עודכן לאחרונה: 25 אוקטובר 2025</p>
+                <p class="last-updated">עודכן לאחרונה: 12 נובמבר 2025</p>
 
                 <h3>1. הקדמה</h3>
                 <p>השימוש באפליקציה מהווה הסכמה לתנאים אלה. אם אינך מסכים, אל תשתמש באפליקציה.</p>
@@ -581,7 +711,7 @@
                 <div class="section-divider"></div>
 
                 <h3>2. מטרת האפליקציה</h3>
-                <p>MyTor מאפשרת למשתמשים להזמין תורים לעסקים שונים ולבעלי עסקים לנהל את התורים שלהם.</p>
+                <p>MyTor מאפשרת למשתמשים להזמין תורים, להצטרף לרשימות המתנה, לקבל התראות על זמינות, ולבעלי עסקים לנהל לוחות זמנים, מדיה והודעות.</p>
 
                 <div class="section-divider"></div>
 
@@ -596,16 +726,17 @@
 
                 <div class="section-divider"></div>
 
-                <h3>4. תורים ואחריות</h3>
+                <h3>4. תורים, רשימות המתנה ואחריות</h3>
                 <ul>
                     <li>האפליקציה מהווה פלטפורמה בלבד ואינה אחראית על איכות השירותים</li>
-                    <li>כל בעיה, תשלום או ביטול יטופלו ישירות בין המשתמש לעסק</li>
+                    <li>הצטרפות לרשימת המתנה אינה מבטיחה תור; ההתראות פועלות בשיטת כל הקודם זוכה</li>
+                    <li>כל בעיה, תשלום, ביטול או אי הגעה יטופלו ישירות בין המשתמש לעסק</li>
                 </ul>
 
                 <div class="section-divider"></div>
 
                 <h3>5. התראות</h3>
-                <p>האפליקציה עשויה לשלוח התראות תזכורת. ניתן לבטל אותן בהגדרות המכשיר.</p>
+                <p>האפליקציה עשויה לשלוח תזכורות, התראות על רשימות המתנה והודעות עסק (לא יותר מפעם ב־3 ימים לכל עסק). ההתראות נשלחות באמצעות Firebase Cloud Messaging וניתן לבטל אותן דרך הגדרות המכשיר, אך הדבר עשוי להגביל חלק מהפיצ'רים.</p>
 
                 <div class="section-divider"></div>
 
@@ -626,7 +757,7 @@
                 <div class="section-divider"></div>
 
                 <h3>8. הגבלת אחריות</h3>
-                <p>האפליקציה ניתנת "כפי שהיא" ללא אחריות מכל סוג. MyTor אינה אחראית לכל נזק הנגרם משימוש באפליקציה.</p>
+                <p>האפליקציה ניתנת "כפי שהיא" ללא אחריות מכל סוג. אין התחייבות לזמינות רציפה, לאספקת התראות או לזמינות מקומות ברשימת המתנה. MyTor אינה אחראית לכל נזק הנגרם משימוש באפליקציה.</p>
 
                 <div class="section-divider"></div>
 
@@ -637,6 +768,82 @@
                     <h3>📧 יצירת קשר</h3>
                     <p><a href="mailto:MyTor00@hotmail.com">MyTor00@hotmail.com</a></p>
                     <p>או דרך כפתור התמיכה באפליקציה</p>
+                </div>
+            </div>
+
+            <!-- Arabic Terms -->
+            <div class="language-content arabic">
+                <h2>⚖️ شروط الاستخدام</h2>
+                <p class="last-updated">آخر تحديث: 12 نوفمبر 2025</p>
+
+                <h3>1. المقدمة</h3>
+                <p>باستخدامك لتطبيق MyTor، فإنك توافق على شروط الاستخدام هذه. إذا لم توافق، يرجى عدم استخدام التطبيق.</p>
+
+                <div class="section-divider"></div>
+
+                <h3>2. هدف التطبيق</h3>
+                <p>MyTor عبارة عن منصة حجز تربط المستخدمين بالأعمال (مثل الحلاقين، أطباء الأسنان، مقدمي خدمات التجميل وغيرهم). تمكن المستخدمين من حجز المواعيد، الانضمام إلى قوائم الانتظار، تلقي تنبيهات التوفر، وتمكّن أصحاب الأعمال من إدارة الجداول والوسائط والإعلانات.</p>
+
+                <div class="section-divider"></div>
+
+                <h3>3. الحسابات والتسجيل</h3>
+                <ul>
+                    <li>يتطلب التسجيل رقم هاتف صالحًا والتحقق عبر OTP من خلال Twilio</li>
+                    <li>يجب تقديم معلومات دقيقة وصحيحة</li>
+                    <li>على أصحاب الأعمال تحديث معلومات أعمالهم باستمرار</li>
+                    <li>يمكن تعليق الحسابات في حال إساءة الاستخدام أو إنشاء حسابات وهمية</li>
+                    <li>تُستخدم رموز المصادقة (JWT وRefresh Token) للحفاظ على تسجيل الدخول بطريقة آمنة وتُخزَّن محليًا على جهازك بشكل مشفر</li>
+                </ul>
+
+                <div class="section-divider"></div>
+
+                <h3>4. المواعيد، قوائم الانتظار والمسؤولية</h3>
+                <ul>
+                    <li>MyTor يعمل كوسيط بين المستخدمين والأعمال فقط</li>
+                    <li>الانضمام إلى قائمة الانتظار لا يضمن الحصول على الموعد؛ تُرسل التنبيهات وفق أسبقية الاستجابة</li>
+                    <li>لا يتحمل MyTor مسؤولية جودة الخدمات أو توفرها أو نتائجها</li>
+                    <li>يجب حل مسائل الدفع، المواعيد، الإلغاء أو التغيب مباشرة بين المستخدم والعمل</li>
+                </ul>
+
+                <div class="section-divider"></div>
+
+                <h3>5. الإشعارات</h3>
+                <p>قد يرسل MyTor تذكيرات بالمواعيد، وتنبيهات لقوائم الانتظار، وإعلانات للأعمال (بحد أقصى مرة كل 3 أيام لكل عمل). تُسلَّم الإشعارات عبر Firebase Cloud Messaging ويمكن تعطيلها من إعدادات جهازك، لكن ذلك قد يقيّد بعض المزايا.</p>
+
+                <div class="section-divider"></div>
+
+                <h3>6. حذف الحساب وتسجيل الخروج</h3>
+                <p>يمكن للمستخدمين حذف حساباتهم وجميع البيانات المرتبطة في أي وقت عبر:</p>
+                <ul>
+                    <li>زر "حذف الحساب" داخل التطبيق</li>
+                    <li>التواصل معنا على البريد الإلكتروني MyTor00@hotmail.com</li>
+                </ul>
+                <p>سيتم حذف جميع البيانات نهائيًا بعد إتمام الطلب.</p>
+                <p><strong>عند تسجيل الخروج:</strong></p>
+                <ul>
+                    <li>يتم حذف جميع رموز المصادقة المخزنة محليًا (JWT وRefresh Token)</li>
+                    <li>يتم إلغاء صلاحية رموز التحديث على الخادم لضمان إنهاء الجلسة تمامًا</li>
+                </ul>
+
+                <div class="section-divider"></div>
+
+                <h3>7. الخصوصية</h3>
+                <p>يخضع استخدامك أيضًا لسياسة الخصوصية الخاصة بنا. لا نشارك أو نبيع البيانات الشخصية. يُستخدم رقم الهاتف فقط للتحقق OTP والمصادقة.</p>
+
+                <div class="section-divider"></div>
+
+                <h3>8. حدود المسؤولية</h3>
+                <p>يُقدَّم MyTor "كما هو" دون أي ضمانات لاستمرارية الخدمة أو خلوها من الأعطال أو وصول الإشعارات أو توفر أماكن في قوائم الانتظار. لا نتحمل أي أضرار تنجم عن استخدام التطبيق.</p>
+
+                <div class="section-divider"></div>
+
+                <h3>9. تغييرات على هذه الشروط</h3>
+                <p>يجوز لنا تعديل هذه الشروط في أي وقت. استمرار استخدامك للتطبيق يعني موافقتك على النسخة المحدّثة.</p>
+
+                <div class="contact-info">
+                    <h3>📧 للتواصل</h3>
+                    <p><a href="mailto:MyTor00@hotmail.com">MyTor00@hotmail.com</a></p>
+                    <p>أو عبر خيار الدعم داخل التطبيق</p>
                 </div>
             </div>
         </div>
